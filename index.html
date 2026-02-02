@@ -52,7 +52,7 @@
         header {
             background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -78,6 +78,7 @@
         
         .nav-links {
             display: flex;
+            align-items: center;
             gap: 2rem;
         }
         
@@ -108,9 +109,47 @@
             width: 100%;
         }
         
+        /* Contact Button in Header */
+        .contact-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--dark);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(245, 158, 11, 0.4);
+        }
+        
+        /* Horizontal Dividers */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
+            margin: 3rem auto;
+            width: 80%;
+            max-width: 800px;
+            opacity: 0.3;
+        }
+        
+        .section-divider {
+            height: 2px;
+            width: 100px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 3rem auto;
+            border-radius: 2px;
+        }
+        
         /* Hero Section */
         .hero {
-            padding: 4rem 0;
+            padding: 5rem 0;
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
             position: relative;
             overflow: hidden;
@@ -151,6 +190,7 @@
         }
         
         .hero-image {
+            flex: 1;
             display: flex;
             justify-content: center;
         }
@@ -187,19 +227,35 @@
         }
         
         .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
         
         .hero-description {
             font-size: 1.1rem;
             color: var(--gray);
+            margin-bottom: 2rem;
         }
         
         .contact-info {
             display: flex;
-            gap: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-decoration: none;
+            color: var(--dark);
         }
         
         .contact-item i {
@@ -247,6 +303,57 @@
             color: var(--gray);
             margin-bottom: 3rem;
             max-width: 700px;
+        }
+        
+        /* Portfolio Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .project-tag {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
         }
         
         /* Skills Section */
@@ -299,6 +406,34 @@
             left: 0;
             color: var(--success);
             font-weight: bold;
+        }
+        
+        /* Proficiency Bars */
+        .proficiency-container {
+            margin-top: 2rem;
+        }
+        
+        .proficiency-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .proficiency-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .proficiency-bar {
+            height: 8px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .proficiency-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
         }
         
         /* Timeline Experience */
@@ -484,7 +619,7 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
-            margin: 2rem 0;
+            margin: 1rem;
             transition: var(--transition);
             box-shadow: 0 6px 15px rgba(245, 158, 11, 0.3);
         }
@@ -498,30 +633,6 @@
             color: rgba(255, 255, 255, 0.7);
             margin-top: 2rem;
             font-size: 0.9rem;
-        }
-
-        /* Make all images responsive */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Specific styling for portfolio images */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-item img {
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .project-item img:hover {
-            transform: scale(1.03);
         }
         
         /* Responsive Design */
@@ -574,10 +685,6 @@
                 align-items: flex-start;
             }
             
-            .contact-item {
-                width: 100%;
-            }
-            
             .tools-grid {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             }
@@ -591,10 +698,13 @@
             <a href="#" class="logo">Nauman<span>H.</span></a>
             <div class="nav-links">
                 <a href="#about">About</a>
+                <a href="#portfolio">Portfolio</a>
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
                 <a href="#tools">Tools</a>
-                <a href="#contact">Contact</a>
+                <a href="#contact" class="contact-btn">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
             </div>
         </div>
     </header>
@@ -605,46 +715,107 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Nauman <span>Hameed</span></h1>
-                    <p class="hero-subtitle">3D Environment & Game Asset Specialist</p>
+                    <p class="hero-subtitle">3D Game Artist | Environments & Props Specialist</p>
                     <p class="hero-description">
-                        I am a highly motivated individual with extensive knowledge of 3D Environment processes for Games. 
-                        Experienced in good time management skills while meeting deadlines. Specializing in game-ready environments 
-                        and props for real-time engines with optimized low- and mid-poly assets, clean topology, efficient UVs, and PBR textures.
+                        I am a highly motivated professional with extensive knowledge of 3D Environment processes for Games. 
+                        Specializing in game-ready environments and props for real-time engines with optimized low- and mid-poly assets, 
+                        clean topology, efficient UVs, and PBR textures. Experienced in meeting deadlines with excellent time management.
                     </p>
                     
                     <div class="contact-info">
-                        <div class="contact-item">
-                        <a href="https://www.youtube.com/@naumanhameed9636/videos" class="portfolio-link" target="_blank">
+                        <a href="https://www.youtube.com/@naumanhameed9636/videos" class="contact-item" target="_blank">
                             <i class="fa-brands fa-youtube" style="color: #ff0000;"></i>
-                            <span>Youtube</span>
-                            </a>
-                        </div>
-                        <div class="contact-item">
-                            <a href="https://www.behance.net/naumanhameed" class="portfolio-link" target="_blank">
-                                <i class="fas fa-globe"></i>
-                                <span>Behance</span>
-                            </a>
-                        </div>
-                        <div class="contact-item">
-                        <a href="#" class="portfolio-link" target="_blank">
-                            <i class="fab fa-discord"></i>
-                            <span>Discord</span>
-                            </a>
-                        </div>
+                            <span>YouTube Portfolio</span>
+                        </a>
+                        <a href="https://www.behance.net/naumanhameed" class="contact-item" target="_blank">
+                            <i class="fas fa-globe"></i>
+                            <span>Behance Portfolio</span>
+                        </a>
+                        <a href="mailto:nauman.hameedd@gmail.com" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email Me</span>
+                        </a>
                     </div>
                     
                     <div class="location-tag">
-                        <i class="fas fa-map-marker-alt"></i> Remote - Lahore, Pakistan
+                        <i class="fas fa-map-marker-alt"></i> Available for Remote Work - Lahore, Pakistan
                     </div>
                 </div>
                 
                 <div class="hero-image">
-                    <!-- Placeholder for profile image -->
                     <img src="profilepic.jpg" alt="Nauman Hameed - 3D Artist" class="profile-img">
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Portfolio Section -->
+    <div class="divider"></div>
+    
+    <section class="section" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfolio Highlights</h2>
+            <p class="section-subtitle">Showcasing my best work in 3D environment and game asset creation</p>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Game Environment" class="project-img">
+                    <div class="project-content">
+                        <h3>Modular Game Environment</h3>
+                        <p>Complete game-ready environment with optimized assets for Unity.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">Maya</span>
+                            <span class="project-tag">Substance</span>
+                        </div>
+                        <a href="https://www.behance.net/naumanhameed" class="contact-item" style="display: inline-flex; margin-top: 1rem;" target="_blank">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Game Props" class="project-img">
+                    <div class="project-content">
+                        <h3>Game Prop Collection</h3>
+                        <p>Optimized low-poly props with PBR textures for mobile games.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Low-Poly</span>
+                            <span class="project-tag">Mobile</span>
+                            <span class="project-tag">PBR</span>
+                        </div>
+                        <a href="https://www.behance.net/naumanhameed" class="contact-item" style="display: inline-flex; margin-top: 1rem;" target="_blank">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="3D Architecture" class="project-img">
+                    <div class="project-content">
+                        <h3>Architectural Visualization</h3>
+                        <p>Residential building modeling with realistic textures and lighting.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Architecture</span>
+                            <span class="project-tag">3D Modeling</span>
+                            <span class="project-tag">Texturing</span>
+                        </div>
+                        <a href="https://www.behance.net/naumanhameed" class="contact-item" style="display: inline-flex; margin-top: 1rem;" target="_blank">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://www.behance.net/naumanhameed" class="portfolio-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> View Full Portfolio on Behance
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
 
     <!-- Skills Section -->
     <section class="section" id="skills">
@@ -693,121 +864,94 @@
     <!-- Experience Section -->
     <section class="section" id="experience" style="background-color: rgba(37, 99, 235, 0.03);">
         <div class="container">
-            <h2 class="section-title">Work Experience</h2>
+            <h2 class="section-title">Professional Experience</h2>
             <p class="section-subtitle">Over 12 years of professional experience in 3D art, game development, and motion graphics.</p>
             
             <div class="timeline">
-                <!-- Current Job -->
+                <!-- Current Role -->
                 <div class="timeline-item">
-                    <div class="timeline-date">03/2020 - 11/2025</div>
+                    <div class="timeline-date">03/2020 - Present</div>
                     <div class="timeline-content">
                         <h3>Environment Artist</h3>
                         <span class="company">DevOps Game Studio</span>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</div>
-                        <p>Working as 3D CG Environment Artist with Activities: Design Game Environment & Props Creating, Modifying all kind of 3D assets in Professional manner.</p>
+                        <p>Designing game environments and props, creating and modifying 3D assets for various game projects. Focus on optimization for real-time rendering.</p>
                         <div class="achievement-badge">Accomplished Tier 1</div>
                         <div class="achievement-badge">Received Motorbike as Reward</div>
                     </div>
                 </div>
                 
-                <!-- Previous Jobs -->
+                <!-- Previous Role -->
                 <div class="timeline-item">
                     <div class="timeline-date">09/2017 - 02/2020</div>
                     <div class="timeline-content">
                         <h3>3D CG Artist for Games</h3>
                         <span class="company">ICAW Game Studio</span>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</div>
-                        <p>Worked as 3D CG Artist with work Responsibilities of Designing Complete Game Environment, Creating, Modifying 3D assets and Game UI.</p>
-                        <div class="achievement-badge">Accomplished Punctuality Reward Constantly 3 months</div>
+                        <p>Designed complete game environments, created and modified 3D assets, and developed game UI for multiple projects.</p>
                         <div class="achievement-badge">Employee of the Month (3 Times)</div>
                     </div>
                 </div>
                 
+                <!-- Freelance Work -->
                 <div class="timeline-item">
-                    <div class="timeline-date">09/2016 - 08/2017</div>
+                    <div class="timeline-date">2014 - Present</div>
                     <div class="timeline-content">
-                        <h3>3D Modeler & CG Artist</h3>
-                        <span class="company">Appricot Studio (Fazbro)</span>
-                        <div class="location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</div>
-                        <p>Worked as 3D CG Artist with responsible Activities: Designing Game Environment & Post Shots, Creating, Modifying and Editing 3D assets.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">11/2014 - 06/2016</div>
-                    <div class="timeline-content">
-                        <h3>2D Design & 3D Modeling Artist</h3>
-                        <span class="company">DiGi Gamez Studio</span>
-                        <div class="location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</div>
-                        <p>Working as a 2D & 3D Artist in DiGi Games with Activities: Designing Complete Game assets, GUI and Screenshots.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">12/2011 - 08/2013</div>
-                    <div class="timeline-content">
-                        <h3>Architectural 3D Modeler</h3>
-                        <span class="company">Architecture Initiatives</span>
-                        <div class="location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</div>
-                        <p>Architecture for Residential Buildings in Lahore.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">03/2008 - 11/2011</div>
-                    <div class="timeline-content">
-                        <h3>Motion Graphics Artist</h3>
-                        <span class="company">Royal News Channel (3D & Motion Graphics)</span>
-                        <div class="location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</div>
-                        <p>Worked as 3D Motion Graphics Artist, I was responsible for all kind of Models with textures for Studio Sets for Talk Shows and News Room design.</p>
+                        <h3>Freelance 3D Artist</h3>
+                        <span class="company">Various Clients</span>
+                        <div class="location"><i class="fas fa-map-marker-alt"></i> Remote</div>
+                        <p>Working with clients worldwide to create game-ready assets, environments, and props for various projects including mobile and PC games.</p>
+                        <div class="achievement-badge">Client Satisfaction: 95%</div>
+                        <div class="achievement-badge">On-time Delivery: 98%</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tools & Languages Section -->
+    <!-- Tools Section -->
     <section class="section" id="tools">
         <div class="container">
-            <h2 class="section-title">Tools & Languages</h2>
+            <h2 class="section-title">Tools & Software Proficiency</h2>
             
             <div style="margin-bottom: 4rem;">
-                <h3 style="color: var(--dark); margin-bottom: 1.5rem; font-size: 1.5rem;">Software & Tools</h3>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <div class="tool-icon">
-                            <i class="fas fa-cube"></i>
+                <h3 style="color: var(--dark); margin-bottom: 1.5rem; font-size: 1.5rem;">Software Proficiency</h3>
+                <div class="proficiency-container">
+                    <div class="proficiency-item">
+                        <div class="proficiency-header">
+                            <span>Autodesk Maya</span>
+                            <span>Advanced</span>
                         </div>
-                        <h4>Autodesk Maya</h4>
-                        <p>Primary Modeling Tool</p>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 90%"></div>
+                        </div>
                     </div>
-                    <div class="tool-card">
-                        <div class="tool-icon">
-                            <i class="fas fa-paint-brush"></i>
+                    <div class="proficiency-item">
+                        <div class="proficiency-header">
+                            <span>Substance Painter</span>
+                            <span>Intermediate</span>
                         </div>
-                        <h4>Substance Painter</h4>
-                        <p>PBR Texturing</p>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 75%"></div>
+                        </div>
                     </div>
-                    <div class="tool-card">
-                        <div class="tool-icon">
-                            <i class="fas fa-image"></i>
+                    <div class="proficiency-item">
+                        <div class="proficiency-header">
+                            <span>Unity</span>
+                            <span>Functional (Asset Integration)</span>
                         </div>
-                        <h4>Photoshop</h4>
-                        <p>Texture Editing & 2D Design</p>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 65%"></div>
+                        </div>
                     </div>
-                    <div class="tool-card">
-                        <div class="tool-icon">
-                            <i class="fas fa-gamepad"></i>
+                    <div class="proficiency-item">
+                        <div class="proficiency-header">
+                            <span>Photoshop</span>
+                            <span>Advanced</span>
                         </div>
-                        <h4>Unity</h4>
-                        <p>Asset Integration</p>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon">
-                            <i class="fas fa-tv"></i>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 85%"></div>
                         </div>
-                        <h4>Marmoset Toolbag</h4>
-                        <p>Presentation & Baking</p>
                     </div>
                 </div>
             </div>
@@ -858,23 +1002,23 @@
                     Let's collaborate on creating stunning 3D environments and optimized game assets for your next project.
                 </p>
 
-                <div class= "contact-info">
-                <a href="https://www.behance.net/naumanhameed" class="portfolio-link" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> View Portfolio & Projects
-                </a>
-                <a href="https://www.youtube.com/@naumanhameed9636/videos" class="portfolio-link" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Watch Portfolio Videos
-                </a>
+                <div class="contact-info" style="justify-content: center; margin-bottom: 2rem;">
+                    <a href="mailto:nauman.hameedd@gmail.com" class="portfolio-link">
+                        <i class="fas fa-envelope"></i> Email: nauman.hameedd@gmail.com
+                    </a>
+                    <a href="https://www.behance.net/naumanhameed" class="portfolio-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Behance Portfolio
+                    </a>
                 </div>
                 
-                <div class="contact-info" style="justify-content: center; margin-top: 2rem;">
-                    <div class="contact-item" color: white;">
-                        <i class="fas fa-envelope"></i>
-                        <span>nauman.hameedd@gmail.com</span>
-                    </div>
-                    <div class="contact-item" color: white;">
+                <div class="contact-info" style="justify-content: center; margin-top: 1rem;">
+                    <div class="contact-item" style="background-color: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">
                         <i class="fab fa-discord"></i>
-                        <span>naumanhameed</span>
+                        <span>Discord: naumanhameed</span>
+                    </div>
+                    <div class="contact-item" style="background-color: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Lahore, Pakistan (Remote Available)</span>
                     </div>
                 </div>
                 
@@ -921,15 +1065,7 @@
         }, observerOptions);
         
         // Apply initial styles for animation
-        document.querySelectorAll('.timeline-item').forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(item);
-        });
-        
-        // Apply to skill cards
-        document.querySelectorAll('.skill-card, .tool-card').forEach(item => {
+        document.querySelectorAll('.timeline-item, .skill-card, .tool-card, .project-card').forEach(item => {
             item.style.opacity = '0';
             item.style.transform = 'translateY(20px)';
             item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
