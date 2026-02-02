@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nauman Hameed - Senior 3D Artist & Environment Specialist</title>
+    <title>Nauman Hameed - 3D Game Artist Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -129,149 +129,83 @@
             box-shadow: 0 6px 15px rgba(245, 158, 11, 0.4);
         }
         
-        /* Download CV Button Styles */
+        /* Download CV Button */
         .download-cv-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
             background: linear-gradient(135deg, var(--success), #34d399);
             color: white;
             padding: 0.7rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
             transition: var(--transition);
             box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .download-cv-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
-            color: white;
         }
         
-        /* Hero Section with Slideshow */
+        /* Hero Section with Background Carousel */
         .hero {
-            padding: 2rem 0;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
+            padding: 5rem 0;
             position: relative;
             overflow: hidden;
+            min-height: 85vh;
             display: flex;
             align-items: center;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(29, 78, 216, 0.85) 100%);
         }
         
-        .hero:before {
-            content: '';
+        .hero-bg-carousel {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0) 70%);
-            top: -150px;
-            right: -150px;
-        }
-        
-        .hero:after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, rgba(124, 58, 237, 0) 70%);
-            bottom: -100px;
-            left: -100px;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-text {
-            flex: 1;
-        }
-        
-        .hero-slideshow {
-            flex: 1;
-            position: relative;
-            height: 500px;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-        }
-        
-        .slideshow-container {
-            position: relative;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            z-index: 0;
         }
         
-        .slide {
+        .carousel-slide {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1.5s ease-in-out;
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: flex-end;
-            padding: 2rem;
+            background-repeat: no-repeat;
         }
         
-        .slide.active {
-            opacity: 1;
+        .carousel-slide.active {
+            opacity: 0.7;
         }
         
-        .slide-overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        .carousel-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
         }
         
-        .slide-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .slide-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent);
-            color: var(--dark);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 0.5rem;
-            transition: var(--transition);
-        }
-        
-        .slide-link:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-        }
-        
-        .slideshow-nav {
+        .carousel-nav {
             position: absolute;
             bottom: 20px;
             right: 20px;
             display: flex;
             gap: 0.5rem;
-            z-index: 10;
+            z-index: 2;
         }
         
-        .nav-dot {
+        .carousel-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
@@ -280,149 +214,100 @@
             transition: var(--transition);
         }
         
-        .nav-dot.active {
+        .carousel-dot.active {
             background: var(--accent);
             transform: scale(1.2);
         }
         
-        .slideshow-arrow {
+        .carousel-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: var(--transition);
-            z-index: 10;
+            z-index: 2;
+            font-size: 1.2rem;
         }
         
-        .slideshow-arrow:hover {
+        .carousel-arrow:hover {
             background: rgba(0,0,0,0.8);
+            transform: translateY(-50%) scale(1.1);
         }
         
-        .arrow-left {
-            left: 20px;
+        .carousel-arrow-left {
+            left: 30px;
         }
         
-        .arrow-right {
-            right: 20px;
+        .carousel-arrow-right {
+            right: 30px;
         }
         
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: var(--box-shadow);
-            margin-bottom: 1.5rem;
-        }
-        
-        .title-badge {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            line-height: 1.2;
-        }
-        
-        .hero h1 span {
-            color: var(--primary);
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
         
         .hero-subtitle {
             font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
+            color: var(--accent-light);
+            margin-bottom: 1.5rem;
             font-weight: 600;
-        }
-        
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            text-decoration: none;
-            color: var(--dark);
-            transition: var(--transition);
-        }
-        
-        .contact-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .contact-item i {
-            color: var(--primary);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
         
         .location-tag {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--dark);
             padding: 0.7rem 1.5rem;
             border-radius: 50px;
             font-weight: 600;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
-            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+            margin: 1.5rem 0;
         }
         
-        /* Horizontal Dividers */
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--primary), transparent);
-            margin: 1rem auto;
-            width: 80%;
-            max-width: 800px;
-            opacity: 0.3;
+        .value-statement {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin: 2rem auto;
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent);
         }
         
-        .section-divider {
-            height: 2px;
-            width: 100px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            margin: 3rem auto;
-            border-radius: 2px;
-        }
-        
-        /* Sections */
-        .section {
-            padding: 1.5rem 0;
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 5rem 0;
+            background-color: white;
         }
         
         .section-title {
@@ -431,35 +316,30 @@
             margin-bottom: 3rem;
             position: relative;
             display: inline-block;
+            text-align: center;
+            width: 100%;
         }
         
         .section-title:after {
             content: '';
             position: absolute;
-            width: 60%;
+            width: 100px;
             height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
             bottom: -10px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             border-radius: 2px;
         }
         
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--gray);
-            margin-bottom: 3rem;
-            max-width: 700px;
-        }
-        
-        /* Portfolio Section */
-        .project-grid {
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
         
-        .project-card {
+        .portfolio-item {
             background-color: white;
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -467,221 +347,210 @@
             transition: var(--transition);
         }
         
-        .project-card:hover {
+        .portfolio-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
-        .project-img {
+        .portfolio-img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
         }
         
-        .project-content {
-            padding: 1.5rem;
+        .portfolio-content {
+            padding: 1.8rem;
         }
         
-        .project-content h3 {
+        .portfolio-content h3 {
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
         
-        .project-tags {
+        .tool-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin: 1rem 0;
         }
         
-        .project-tag {
+        .tool-tag {
             background-color: rgba(37, 99, 235, 0.1);
             color: var(--primary);
-            padding: 0.3rem 0.8rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .focus-points {
+            list-style-type: none;
+            margin-top: 1rem;
+        }
+        
+        .focus-points li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .focus-points li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
         
         /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+        .skills-section {
+            padding: 5rem 0;
+            background-color: rgba(37, 99, 235, 0.03);
         }
         
-        .skill-card {
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-item {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            border-top: 4px solid var(--primary);
+            border-left: 4px solid var(--primary);
         }
         
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-card h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+        .skill-item h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
             gap: 0.7rem;
         }
         
-        .skill-card h3 i {
+        .skill-item h3 i {
             color: var(--accent);
         }
         
-        .skill-list {
-            list-style-type: none;
+        /* Experience Section */
+        .experience-section {
+            padding: 5rem 0;
+            background-color: white;
         }
         
-        .skill-list li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        
-        .skill-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--success);
-            font-weight: bold;
-        }
-        
-        /* Proficiency Bars */
-        .proficiency-container {
-            margin-top: 2rem;
-        }
-        
-        .proficiency-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .proficiency-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-        
-        .proficiency-bar {
-            height: 8px;
-            background-color: var(--light-gray);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .proficiency-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 4px;
-        }
-        
-        /* Timeline Experience */
-        .timeline {
-            position: relative;
+        .experience-timeline {
             max-width: 900px;
             margin: 0 auto;
         }
         
-        .timeline:before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            height: 100%;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        .experience-item {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--light-gray);
         }
         
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2.5rem;
-            padding-left: 80px;
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
         
-        .timeline-date {
-            position: absolute;
-            left: 0;
-            top: -20px;
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .experience-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .experience-period {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
             font-weight: 600;
-            min-width: 120px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
-        }
-        
-        .timeline-content {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 1.8rem;
-            box-shadow: var(--box-shadow);
-            border-left: 4px solid var(--accent);
-        }
-        
-        .timeline-content h3 {
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.4rem;
-        }
-        
-        .company {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .location {
-            color: var(--gray);
             font-size: 0.9rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
         }
         
-        .achievement-badge {
-            display: inline-block;
-            background-color: rgba(245, 158, 11, 0.1);
+        .experience-content {
+            margin-top: 1rem;
+        }
+        
+        .experience-content ul {
+            list-style-type: none;
+            margin-top: 1rem;
+        }
+        
+        .experience-content li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .experience-content li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
             color: var(--accent);
-            padding: 0.3rem 0.8rem;
+        }
+        
+        .ai-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 0.4rem 1rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
-            margin-top: 0.8rem;
+            margin-top: 0.5rem;
             margin-right: 0.5rem;
         }
         
-        /* Tools Section */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 1.5rem;
+        .note-box {
+            background-color: rgba(245, 158, 11, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-style: italic;
+            color: var(--gray);
         }
         
-        .tool-card {
+        /* Tools Section */
+        .tools-section {
+            padding: 5rem 0;
+            background-color: rgba(37, 99, 235, 0.03);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tool-item {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
             box-shadow: var(--box-shadow);
             transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
         
-        .tool-card:hover {
+        .tool-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
         }
@@ -694,28 +563,113 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1rem;
+            margin: 0 auto 1.5rem;
             color: white;
             font-size: 1.8rem;
         }
         
-        /* Language Section */
-        .languages {
+        .tool-name {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-level {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        /* Workflow Section */
+        .workflow-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .workflow-steps {
             display: flex;
+            justify-content: space-between;
             flex-wrap: wrap;
             gap: 1.5rem;
+            margin-top: 3rem;
+            counter-reset: step-counter;
+        }
+        
+        .workflow-step {
+            flex: 1;
+            min-width: 180px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            text-align: center;
+        }
+        
+        .workflow-step:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Education Section */
+        .education-section {
+            padding: 5rem 0;
+            background-color: rgba(37, 99, 235, 0.03);
+        }
+        
+        .education-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        /* Languages Section */
+        .languages-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .languages-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
         }
         
         .language-item {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 1.5rem;
+            padding: 1.5rem 2rem;
             box-shadow: var(--box-shadow);
-            flex: 1;
-            min-width: 200px;
             display: flex;
             align-items: center;
             gap: 1rem;
+            min-width: 250px;
         }
         
         .language-flag {
@@ -739,144 +693,130 @@
             color: var(--gray);
             font-size: 0.9rem;
         }
+
+        /* Add to your CSS section */
+.view-portfolio-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.view-portfolio-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+    color: white;
+}
+
+.view-portfolio-btn i {
+    margin-right: 0.5rem;
+}
         
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 4rem 0 2rem;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 3rem 0;
             text-align: center;
-        }
-        
-        .portfolio-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: var(--dark);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            box-shadow: 0 6px 15px rgba(245, 158, 11, 0.3);
-        }
-        
-        .portfolio-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
         }
         
         .copyright {
             color: rgba(255, 255, 255, 0.7);
-            margin-top: 2rem;
             font-size: 0.9rem;
-        }
-        
-        /* Floating Download Button */
-        .floating-download-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-        }
-        
-        .floating-download-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
         }
         
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
+            .hero h1 {
+                font-size: 2.8rem;
             }
             
-            .hero-slideshow {
-                order: -1;
-                height: 400px;
+            .value-statement {
+                font-size: 1.2rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .nav-links {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
+            .hero-subtitle {
+                font-size: 1.3rem;
             }
             
             .section-title {
                 font-size: 1.8rem;
             }
             
-            .timeline:before {
-                left: 20px;
+            .workflow-steps {
+                flex-direction: column;
             }
             
-            .timeline-item {
-                padding-left: 60px;
+            .workflow-step {
+                min-width: 100%;
             }
             
-            .timeline-date {
-                min-width: 100px;
+            .carousel-arrow {
+                width: 35px;
+                height: 35px;
                 font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
             }
             
-            .hero-slideshow {
-                height: 350px;
+            .carousel-arrow-left {
+                left: 15px;
+            }
+            
+            .carousel-arrow-right {
+                right: 15px;
+            }
+            
+            .carousel-nav {
+                bottom: 10px;
+                right: 15px;
             }
         }
         
         @media (max-width: 480px) {
-            .contact-info {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
             
             .tools-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                grid-template-columns: 1fr;
             }
             
-            .hero-slideshow {
-                height: 300px;
-            }
-            
-            .slide-overlay {
-                padding: 1rem;
-            }
-            
-            .slide-title {
-                font-size: 1.2rem;
+            .hero-content {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -887,357 +827,394 @@
         <div class="container nav-container">
             <a href="#" class="logo">Nauman<span>H.</span></a>
             <div class="nav-links">
-                <a href="#about">About</a>
                 <a href="#portfolio">Portfolio</a>
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
                 <a href="#tools">Tools</a>
-                <a href="#contact" class="contact-btn">
-                    <i class="fas fa-envelope"></i> Contact
+                <a href="#workflow">Workflow</a>
+                <a href="mailto:nauman.hameedd@gmail.com" class="contact-btn">
+                    <i class="fas fa-envelope"></i> Contact Me
                 </a>
-                <a href="/Nauman_Hameed_CV.pdf" class="download-cv-btn" download="Nauman_Hameed_CV.pdf">
-                    <i class="fas fa-download"></i> CV
+                <a href="Nauman_Hameed_CV.pdf" class="download-cv-btn" download="Nauman_Hameed_CV.pdf">
+                    <i class="fas fa-download"></i> Download CV
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section with Slideshow -->
+    <!-- Hero Section with Background Carousel -->
     <section class="hero" id="about">
+        <!-- Background Carousel -->
+        <div class="hero-bg-carousel">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+            
+            <!-- Slide 2 -->
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+            
+            <!-- Slide 3 -->
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+            
+            <!-- Slide 4 -->
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+            
+            <!-- Slide 5 -->
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+            
+            <!-- Slide 6 -->
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1518834103328-4dbb0d8400de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
+            
+            <!-- Navigation Arrows -->
+            <div class="carousel-arrow carousel-arrow-left" onclick="prevCarouselSlide()">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="carousel-arrow carousel-arrow-right" onclick="nextCarouselSlide()">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            
+            <!-- Navigation Dots -->
+            <div class="carousel-nav">
+                <div class="carousel-dot active" onclick="goToCarouselSlide(0)"></div>
+                <div class="carousel-dot" onclick="goToCarouselSlide(1)"></div>
+                <div class="carousel-dot" onclick="goToCarouselSlide(2)"></div>
+                <div class="carousel-dot" onclick="goToCarouselSlide(3)"></div>
+                <div class="carousel-dot" onclick="goToCarouselSlide(4)"></div>
+                <div class="carousel-dot" onclick="goToCarouselSlide(5)"></div>
+            </div>
+        </div>
+        
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Nauman <span>Hameed</span></h1>
-                    <p class="hero-subtitle">Senior 3D Game Artist | Environments & Props Specialist</p>
-                    <p class="hero-description">
-                        I am a highly motivated professional with extensive knowledge of 3D Environment processes for Games. 
-                        Specializing in game-ready environments and props for real-time engines with optimized low- and mid-poly assets, 
-                        clean topology, efficient UVs, and PBR textures. Experienced in meeting deadlines with excellent time management.
-                    </p>
-                    
-                    <div class="location-tag">
-                        <i class="fas fa-map-marker-alt"></i> Available for Remote Work - Lahore, Pakistan
-                    </div>
-                    
-                    <div class="contact-info">
-                        <a href="https://www.youtube.com/@naumanhameed9636/videos" class="contact-item" target="_blank">
-                            <i class="fa-brands fa-youtube" style="color: #ff0000;"></i>
-                            <span>YouTube Portfolio</span>
-                        </a>
-                        <a href="https://www.behance.net/naumanhameed" class="contact-item" target="_blank">
-                            <i class="fas fa-globe"></i>
-                            <span>Behance Portfolio</span>
-                        </a>
-                        <a href="mailto:nauman.hameedd@gmail.com" class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>Email Me</span>
-                        </a>
-                        <div>
-                            <a href="Nauman_Hameed_CV.pdf" class="download-cv-btn" download="Nauman_Hameed_CV.pdf">
-                                <i class="fas fa-download"></i> Download CV (PDF)
-                            </a>
-                        </div>
-                    </div>
-                    
-
+                <h1>Nauman Hameed</h1>
+                <p class="hero-subtitle">3D Game Artist | Environments & Props</p>
+                <div class="location-tag">
+                    <i class="fas fa-map-marker-alt"></i> Remote / On-site | Unity-ready assets
                 </div>
                 
-                <div class="hero-slideshow">
-                    <div class="slideshow-container">
-                        <!-- Slide 1 -->
-                        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
-                            <div class="slide-overlay">
-                                <div class="slide-title">Modular Game Environment</div>
-                                <p>Complete game-ready environment with optimized assets for Unity</p>
-                                <a href="https://www.behance.net/naumanhameed" class="slide-link" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i> View Project
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Slide 2 -->
-                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
-                            <div class="slide-overlay">
-                                <div class="slide-title">Game Prop Collection</div>
-                                <p>Optimized low-poly props with PBR textures for mobile games</p>
-                                <a href="https://www.behance.net/naumanhameed" class="slide-link" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i> View Project
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Slide 3 -->
-                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
-                            <div class="slide-overlay">
-                                <div class="slide-title">Architectural Visualization</div>
-                                <p>Residential building modeling with realistic textures and lighting</p>
-                                <a href="https://www.behance.net/naumanhameed" class="slide-link" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i> View Project
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Slide 4 -->
-                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
-                            <div class="slide-overlay">
-                                <div class="slide-title">3D Character Modeling</div>
-                                <p>Game-ready character models with detailed textures and rigging</p>
-                                <a href="https://www.behance.net/naumanhameed" class="slide-link" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i> View Project
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Navigation Arrows -->
-                        <div class="slideshow-arrow arrow-left" onclick="prevSlide()">
-                            <i class="fas fa-chevron-left"></i>
-                        </div>
-                        <div class="slideshow-arrow arrow-right" onclick="nextSlide()">
-                            <i class="fas fa-chevron-right"></i>
-                        </div>
-                        
-                        <!-- Navigation Dots -->
-                        <div class="slideshow-nav">
-                            <div class="nav-dot active" onclick="goToSlide(0)"></div>
-                            <div class="nav-dot" onclick="goToSlide(1)"></div>
-                            <div class="nav-dot" onclick="goToSlide(2)"></div>
-                            <div class="nav-dot" onclick="goToSlide(3)"></div>
-                        </div>
-                    </div>
+                <div class="value-statement">
+                    Game-ready environment and prop artist specializing in optimized assets for real-time engines. Experienced with modular workflows, PBR texturing, and Unity integration for mobile and PC projects.
+                </div>
+                
+                <!-- <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="mailto:nauman.hameedd@gmail.com" class="contact-btn">
+                        <i class="fas fa-envelope"></i> Email Me
+                    </a>
+                    <a href="Nauman_Hameed_CV.pdf" class="download-cv-btn" download="Nauman_Hameed_CV.pdf">
+                        <i class="fas fa-download"></i> Download CV
+                    </a> -->
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <div class="divider"></div>
-    
-    <section class="section" id="portfolio">
+    <section class="portfolio-section" id="portfolio">
         <div class="container">
             <h2 class="section-title">Portfolio Highlights</h2>
-            <p class="section-subtitle">Showcasing my best work in 3D environment and game asset creation</p>
+        
+            <div class="portfolio-grid">
+                <!-- Modular Environment Set -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modular Environment Set" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>Modular Environment</h3>
+                        <div class="tool-tags">
+                            <span class="tool-tag">Maya</span>
+                            <span class="tool-tag">Substance Painter</span>
+                            <span class="tool-tag">Unity</span>
+                        </div>
+                        <p><strong>Focus:</strong> Modular design, low/mid-poly optimization, reusable assets</p>
+                        <ul class="focus-points">
+                            <li>Designed for efficient scene assembly</li>
+                            <li>Reduced draw calls through smart modularity</li>
+                            <li>Consistent texel density across all assets</li>
+                        </ul>
+                    </div>
+                </div>
             
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Game Environment" class="project-img">
-                    <div class="project-content">
-                        <h3>Modular Game Environment</h3>
-                        <p>Complete game-ready environment with optimized assets for Unity.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Unity</span>
-                            <span class="project-tag">Maya</span>
-                            <span class="project-tag">Substance</span>
+                <!-- Game Props Pack -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Game Props Pack" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>Game Props Pack</h3>
+                        <div class="tool-tags">
+                            <span class="tool-tag">Maya</span>
+                            <span class="tool-tag">Substance Painter</span>
+                            <span class="tool-tag">Unity</span>
                         </div>
+                        <p><strong>Focus:</strong> Clean topology, consistent texel density</p>
+                        <ul class="focus-points">
+                            <li>Optimized props for mobile performance</li>
+                            <li>Efficient UV layout for texture atlasing</li>
+                            <li>Game-ready with proper LODs</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Game Props" class="project-img">
-                    <div class="project-content">
-                        <h3>Game Prop Collection</h3>
-                        <p>Optimized low-poly props with PBR textures for mobile games.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Low-Poly</span>
-                            <span class="project-tag">Mobile</span>
-                            <span class="project-tag">PBR</span>
+            
+                <!-- Stylized Environment Study -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Stylized Environment Study" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>Stylized Environment</h3>
+                        <div class="tool-tags">
+                            <span class="tool-tag">Maya</span>
+                            <span class="tool-tag">Substance Painter</span>
+                            <span class="tool-tag">Unity</span>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="3D Architecture" class="project-img">
-                    <div class="project-content">
-                        <h3>Architectural Visualization</h3>
-                        <p>Residential building modeling with realistic textures and lighting.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Architecture</span>
-                            <span class="project-tag">3D Modeling</span>
-                            <span class="project-tag">Texturing</span>
-                        </div>                        
+                        <p><strong>Focus:</strong> Stylized materials, lighting balance</p>
+                        <ul class="focus-points">
+                            <li>Emphasis on visual readability</li>
+                            <li>Performance-optimized shaders</li>
+                            <li>Cohesive art direction</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            
+        
+            <!-- Optional: Add a main Behance button at the bottom of the section -->
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="https://www.behance.net/naumanhameed" class="portfolio-link" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> View Full Portfolio on Behance
+                <a href="https://www.behance.net/naumanhameed" target="_blank" class="contact-btn" style="display: inline-block; margin-top: 1.5rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 0.7rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600;">
+                    <i class="fab fa-behance"></i> View Full Behance Portfolio
                 </a>
             </div>
         </div>
     </section>
 
-    <div class="divider"></div>
-
     <!-- Skills Section -->
-    <section class="section" id="skills">
+    <section class="skills-section" id="skills">
         <div class="container">
-            <h2 class="section-title">Core Skills & Expertise</h2>
-            <p class="section-subtitle">Specialized in creating optimized 3D assets for game environments with a focus on performance and visual quality.</p>
+            <h2 class="section-title">Core Skills</h2>
             
-            <div class="skills-container">
-                <div class="skill-card">
-                    <h3><i class="fas fa-cube"></i> 3D Modeling & Environment</h3>
-                    <ul class="skill-list">
-                        <li>3D Modeling (Game Assets)</li>
-                        <li>Environment & Prop Design</li>
-                        <li>Low / Mid Poly Optimization</li>
-                        <li>Topology Optimization</li>
-                        <li>Game Environment Design</li>
-                        <li>Architectural 3D Modeling</li>
-                    </ul>
+            <div class="skills-list">
+                <div class="skill-item">
+                    <h3><i class="fas fa-cube"></i> Game-Ready 3D Modeling</h3>
+                    <p>Environments & props with optimized topology</p>
                 </div>
                 
-                <div class="skill-card">
-                    <h3><i class="fas fa-paint-brush"></i> Texturing & UVs</h3>
-                    <ul class="skill-list">
-                        <li>UV Mapping & Texture Atlasing</li>
-                        <li>PBR Texturing Workflow</li>
-                        <li>Visual Consistency & Style Matching</li>
-                        <li>2D Design for Game Assets</li>
-                        <li>Game UI & GUI Design</li>
-                    </ul>
+                <div class="skill-item">
+                    <h3><i class="fas fa-chart-line"></i> Low / Mid-Poly Optimization</h3>
+                    <p>Balancing visual quality with performance</p>
                 </div>
                 
-                <div class="skill-card">
-                    <h3><i class="fas fa-gamepad"></i> Integration & Collaboration</h3>
-                    <ul class="skill-list">
-                        <li>Unity Asset Pipeline (Game-Ready Assets)</li>
-                        <li>Mobile Game Optimization</li>
-                        <li>Team Collaboration & Feedback Integration</li>
-                        <li>Motion Graphics for Broadcast</li>
-                        <li>Time Management & Deadline Oriented</li>
-                    </ul>
+                <div class="skill-item">
+                    <h3><i class="fas fa-map"></i> UV Mapping & Layout</h3>
+                    <p>Efficient UV unwrapping and texel density management</p>
                 </div>
+                
+                <div class="skill-item">
+                    <h3><i class="fas fa-paint-brush"></i> PBR Texturing Workflows</h3>
+                    <p>Physically based rendering materials for realism</p>
+                </div>
+                
+                <div class="skill-item">
+                    <h3><i class="fas fa-puzzle-piece"></i> Modular Asset Creation</h3>
+                    <p>Reusable components for efficient level design</p>
+                </div>
+                
+                <div class="skill-item">
+                    <h3><i class="fas fa-gamepad"></i> Real-Time Engine Integration</h3>
+                    <p>Unity asset pipeline and optimization</p>
+                </div>
+                
+                <!-- <div class="skill-item">
+                    <h3><i class="fas fa-robot"></i> AI Marketing Automation</h3>
+                    <p>ChatGPT automation, AI workflows, and digital marketing integration</p>
+                </div> -->
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section class="section" id="experience" style="background-color: rgba(37, 99, 235, 0.03);">
+    <section class="experience-section" id="experience">
         <div class="container">
             <h2 class="section-title">Professional Experience</h2>
-            <p class="section-subtitle">Over 12 years of professional experience in 3D art, game development, and motion graphics.</p>
             
-            <div class="timeline">
-                <!-- Current Role -->
-                <div class="timeline-item">
-                    <div class="timeline-date">03/2020 - Present</div>
-                    <div class="timeline-content">
-                        <h3>Environment Artist</h3>
-                        <span class="company">DevOps Game Studio</span>
-                        <div class="location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</div>
-                        <p>Designing game environments and props, creating and modifying 3D assets for various game projects. Focus on optimization for real-time rendering.</p>
-                        <div class="achievement-badge">Accomplished Tier 1</div>
-                        <div class="achievement-badge">Received Motorbike as Reward</div>
+            <div class="experience-timeline">
+                <!-- AI Marketing Automation Experience
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">AI Marketing Automation Specialist — Freelance</h3>
+                        <span class="experience-period">2021 – Present</span>
+                    </div>
+                    <div class="experience-content">
+                        <ul>
+                            <li>Developed and implemented AI-powered marketing automation workflows using ChatGPT and other AI tools</li>
+                            <li>Created automated content generation systems for social media, email campaigns, and digital marketing</li>
+                            <li>Integrated AI solutions with existing marketing platforms to enhance efficiency and productivity</li>
+                            <li>Built custom AI assistants for lead generation and customer engagement automation</li>
+                            <li>Analyzed marketing data with AI tools to optimize campaigns and improve ROI</li>
+                        </ul>
+                        <div class="ai-badge">ChatGPT Automation</div>
+                        <div class="ai-badge">AI Workflows</div>
+                        <div class="ai-badge">Marketing Integration</div>
+                    </div> 
+                </div> -->
+                
+                <!-- 3D Artist Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">3D Environment & Prop Artist — Full Time On-Site</h3>
+                        <span class="experience-period">2018 – Present</span>
+                    </div>
+                    <div class="experience-content">
+                        <ul>
+                            <li>Created optimized environment and prop assets for real-time applications</li>
+                            <li>Followed modular workflows to ensure asset reusability</li>
+                            <li>Prepared assets for Unity including correct scale, pivots, and materials</li>
+                            <li>Collaborated with development teams to meet technical requirements</li>
+                        </ul>
                     </div>
                 </div>
                 
-                <!-- Previous Role -->
-                <div class="timeline-item">
-                    <div class="timeline-date">09/2017 - 02/2020</div>
-                    <div class="timeline-content">
-                        <h3>3D CG Artist for Games</h3>
-                        <span class="company">ICAW Game Studio</span>
-                        <div class="location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</div>
-                        <p>Designed complete game environments, created and modified 3D assets, and developed game UI for multiple projects.</p>
-                        <div class="achievement-badge">Employee of the Month (3 Times)</div>
+                <!-- Project-Based Work -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">3D Artist — Project-Based Work</h3>
+                        <span class="experience-period">2012 – 2018</span>
+                    </div>
+                    <div class="experience-content">
+                        <ul>
+                            <li>Modeled and textured game assets with performance constraints in mind</li>
+                            <li>Collaborated with designers to match visual direction</li>
+                            <li>Delivered assets ready for real-time rendering pipelines</li>
+                            <li>Adapted to various art styles and project requirements</li>
+                        </ul>
                     </div>
                 </div>
                 
-                <!-- Freelance Work -->
-                <div class="timeline-item">
-                    <div class="timeline-date">2014 - Present</div>
-                    <div class="timeline-content">
-                        <h3>Freelance 3D Artist</h3>
-                        <span class="company">Various Clients</span>
-                        <div class="location"><i class="fas fa-map-marker-alt"></i> Remote</div>
-                        <p>Working with clients worldwide to create game-ready assets, environments, and props for various projects including mobile and PC games.</p>
-                        <div class="achievement-badge">Client Satisfaction: 95%</div>
-                        <div class="achievement-badge">On-time Delivery: 98%</div>
-                    </div>
+                <!-- Note Box -->
+                <div class="note-box">
+                    Experience listed is factual and concise. All work samples available upon request.
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Tools Section -->
-    <section class="section" id="tools">
+    <section class="tools-section" id="tools">
         <div class="container">
-            <h2 class="section-title">Tools & Software Proficiency</h2>
+            <h2 class="section-title">Tools & Software</h2>
             
-            <div style="margin-bottom: 4rem;">
-                <h3 style="color: var(--dark); margin-bottom: 1.5rem; font-size: 1.5rem;">Software Proficiency</h3>
-                <div class="proficiency-container">
-                    <div class="proficiency-item">
-                        <div class="proficiency-header">
-                            <span>Autodesk Maya</span>
-                            <span>Advanced</span>
-                        </div>
-                        <div class="proficiency-bar">
-                            <div class="proficiency-fill" style="width: 75%"></div>
-                        </div>
+            <div class="tools-grid">
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fa-solid fa-cube"></i>
                     </div>
-                    <div class="proficiency-item">
-                        <div class="proficiency-header">
-                            <span>Substance Painter</span>
-                            <span>Intermediate</span>
-                        </div>
-                        <div class="proficiency-bar">
-                            <div class="proficiency-fill" style="width: 60%"></div>
-                        </div>
+                    <h3 class="tool-name">Autodesk Maya</h3>
+                    <p class="tool-level">Advanced</p>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-paint-roller"></i>
                     </div>
-                    <div class="proficiency-item">
-                        <div class="proficiency-header">
-                            <span>Unity</span>
-                            <span>Functional (Asset Integration)</span>
-                        </div>
-                        <div class="proficiency-bar">
-                            <div class="proficiency-fill" style="width: 65%"></div>
-                        </div>
+                    <h3 class="tool-name">Substance Painter</h3>
+                    <p class="tool-level">Intermediate</p>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fab fa-unity"></i>
                     </div>
-                    <div class="proficiency-item">
-                        <div class="proficiency-header">
-                            <span>Photoshop</span>
-                            <span>Advanced</span>
-                        </div>
-                        <div class="proficiency-bar">
-                            <div class="proficiency-fill" style="width: 70%"></div>
-                        </div>
+                    <h3 class="tool-name">Unity</h3>
+                    <p class="tool-level">Asset Integration & Testing</p>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-vector-square"></i>
                     </div>
+                    <h3 class="tool-name">Photoshop</h3>
+                    <p class="tool-level">Supporting Textures</p>
+                </div>
+                
+                <!-- <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="tool-name">ChatGPT/OpenAI</h3>
+                    <p class="tool-level">Automation Expert</p>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="tool-name">AI Marketing Tools</h3>
+                    <p class="tool-level">Integration Specialist</p>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section class="workflow-section" id="workflow">
+        <div class="container">
+            <h2 class="section-title">Workflow Snapshot</h2>
+            
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-title">Reference & Blockout</div>
+                    <p>Establish scale, proportions, and scene layout</p>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-title">Clean Topology & UVs</div>
+                    <p>Optimized mesh flow and efficient UV layout</p>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-title">PBR Texturing</div>
+                    <p>Material creation with realistic properties</p>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-title">Optimization Pass</div>
+                    <p>LOD creation and performance refinement</p>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-title">Unity Import & Validation</div>
+                    <p>Engine testing and final adjustments</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education-section" id="education">
+        <div class="container">
+            <h2 class="section-title">Education / Training</h2>
             
-            <div>
-                <h3 style="color: var(--dark); margin-bottom: 1.5rem; font-size: 1.5rem;">Language Proficiency</h3>
-                <div class="languages">
-                    <div class="language-item">
-                        <div class="language-flag">
-                            <i class="fas fa-globe-americas"></i>
-                        </div>
-                        <div class="language-info">
-                            <h4>English</h4>
-                            <p class="language-level">Professional Working Proficiency</p>
-                        </div>
+            <div class="education-content">
+                <p>Self-taught with continuous professional practice through online courses and production-focused learning. Emphasis on practical application and staying current with industry tools and techniques.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section class="languages-section" id="languages">
+        <div class="container">
+            <h2 class="section-title">Languages</h2>
+            
+            <div class="languages-container">
+                <div class="language-item">
+                    <div class="language-flag">
+                        <i class="fas fa-globe-americas"></i>
                     </div>
-                    
-                    <div class="language-item">
-                        <div class="language-flag">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <div class="language-info">
-                            <h4>Urdu</h4>
-                            <p class="language-level">Full Professional Proficiency</p>
-                        </div>
+                    <div class="language-info">
+                        <h4>English</h4>
+                        <p class="language-level">Professional Working Proficiency</p>
                     </div>
-                    
-                    <div class="language-item">
-                        <div class="language-flag">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <div class="language-info">
-                            <h4>Punjabi</h4>
-                            <p class="language-level">Full Professional Proficiency</p>
-                        </div>
+                </div>
+                
+                <div class="language-item">
+                    <div class="language-flag">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="language-info">
+                        <h4>Urdu</h4>
+                        <p class="language-level">Native</p>
                     </div>
                 </div>
             </div>
@@ -1245,94 +1222,66 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <h2 style="color: white; font-size: 2rem; margin-bottom: 1rem;">Ready to Bring Your Game to Life?</h2>
-                <p style="color: rgba(255, 255, 255, 0.85); max-width: 600px; margin-bottom: 1.5rem;">
-                    Let's collaborate on creating stunning 3D environments and optimized game assets for your next project.
-                </p>
-
-                <div class="contact-info" style="justify-content: center; margin-bottom: 2rem;">
-                    <a href="mailto:nauman.hameedd@gmail.com" class="portfolio-link">
-                        <i class="fas fa-envelope"></i> Contact Me!
-                    </a>
-                    <a href="https://www.behance.net/naumanhameed" class="portfolio-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Behance
-                    </a>
-                </div>
-                
-                <div class="contact-info" style="justify-content: center; margin-top: 1rem;">
-                    <div class="contact-item" style="background-color: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">
-                        <i class="fab fa-discord"></i>
-                        <span>Discord: naumanhameed</span>
-                    </div>
-                    <div class="contact-item" style="background-color: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Lahore, Pakistan (Remote Available)</span>
-                    </div>
-                </div>
-                
-                <a href="Nauman_Hameed_CV.pdf" class="download-cv-btn" download="Nauman_Hameed_CV.pdf" style="margin-top: 2rem;">
-                    <i class="fas fa-file-pdf"></i> Download Full CV
+            <!-- <div style="margin-bottom: 2rem;">
+                <a href="mailto:nauman.hameedd@gmail.com" class="contact-btn" style="margin-right: 1rem;">
+                    <i class="fas fa-envelope"></i> Email Me
                 </a>
-                
-                <p class="copyright">© <span id="currentYear"></span> Nauman Hameed - Senior 3D Artist. All rights reserved.</p>
-            </div>
+                <a href="Nauman_Hameed_CV.pdf" class="download-cv-btn" download="Nauman_Hameed_CV.pdf">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div> -->
+            <p class="copyright">© <span id="currentYear"></span> Nauman Hameed — 3D Game Artist & AI Automation Specialist</p>
         </div>
     </footer>
 
-    <!-- Floating Download Button -->
-    <a href="Nauman_Hameed_CV.pdf" class="floating-download-btn" download="Nauman_Hameed_CV.pdf">
-        <i class="fas fa-download"></i> CV
-    </a>
-
     <script>
-        // Slideshow functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.nav-dot');
+        // Background Carousel functionality
+        let currentCarouselSlide = 0;
+        const carouselSlides = document.querySelectorAll('.carousel-slide');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
         
-        function showSlide(n) {
+        function showCarouselSlide(n) {
             // Hide all slides
-            slides.forEach(slide => {
+            carouselSlides.forEach(slide => {
                 slide.classList.remove('active');
             });
             
             // Remove active class from all dots
-            dots.forEach(dot => {
+            carouselDots.forEach(dot => {
                 dot.classList.remove('active');
             });
             
             // Show current slide and activate corresponding dot
-            currentSlide = (n + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            currentCarouselSlide = (n + carouselSlides.length) % carouselSlides.length;
+            carouselSlides[currentCarouselSlide].classList.add('active');
+            carouselDots[currentCarouselSlide].classList.add('active');
         }
         
-        function nextSlide() {
-            showSlide(currentSlide + 1);
+        function nextCarouselSlide() {
+            showCarouselSlide(currentCarouselSlide + 1);
         }
         
-        function prevSlide() {
-            showSlide(currentSlide - 1);
+        function prevCarouselSlide() {
+            showCarouselSlide(currentCarouselSlide - 1);
         }
         
-        function goToSlide(n) {
-            showSlide(n);
+        function goToCarouselSlide(n) {
+            showCarouselSlide(n);
         }
         
-        // Auto-advance slides every 5 seconds
-        let slideInterval = setInterval(nextSlide, 5000);
+        // Auto-advance carousel every 6 seconds
+        let carouselInterval = setInterval(nextCarouselSlide, 6000);
         
-        // Pause auto-advance when hovering over slideshow
-        const slideshow = document.querySelector('.slideshow-container');
-        slideshow.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
+        // Pause auto-advance when hovering over carousel
+        const carousel = document.querySelector('.hero-bg-carousel');
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
         });
         
-        slideshow.addEventListener('mouseleave', () => {
-            slideInterval = setInterval(nextSlide, 5000);
+        carousel.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(nextCarouselSlide, 6000);
         });
         
         // Set current year in copyright
@@ -1355,7 +1304,7 @@
             });
         });
         
-        // Add animation to timeline items on scroll
+        // Add animation to portfolio items on scroll
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -1372,18 +1321,11 @@
         }, observerOptions);
         
         // Apply initial styles for animation
-        document.querySelectorAll('.timeline-item, .skill-card, .tool-card, .project-card').forEach(item => {
+        document.querySelectorAll('.portfolio-item, .skill-item, .tool-item, .experience-item, .workflow-step').forEach(item => {
             item.style.opacity = '0';
             item.style.transform = 'translateY(20px)';
             item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(item);
-        });
-        
-        // Download tracking
-        document.querySelectorAll('.download-cv-btn, .floating-download-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                console.log('CV download initiated at: ' + new Date().toLocaleString());
-            });
         });
     </script>
 </body>
